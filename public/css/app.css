@@ -1,0 +1,577 @@
+/* ============================================
+   Font — system stack, no external fonts
+   ============================================ */
+
+/* ============================================
+   Design tokens — flat, utilitarian, reserved
+   ============================================ */
+:root {
+    --bs-primary: #2B4C7E;
+    --bs-primary-rgb: 43, 76, 126;
+
+    --bs-secondary: #52525B;
+    --bs-secondary-rgb: 82, 82, 91;
+
+    --bs-success: #15803D;
+    --bs-success-rgb: 21, 128, 61;
+
+    --bs-warning: #B45309;
+    --bs-warning-rgb: 180, 83, 9;
+
+    --bs-danger: #B91C1C;
+    --bs-danger-rgb: 185, 28, 28;
+
+    --bs-info: #6D28D9;
+    --bs-info-rgb: 109, 40, 217;
+
+    --bs-dark: #18181B;
+    --bs-dark-rgb: 24, 24, 27;
+
+    --bs-light: #F2F2F4;
+    --bs-light-rgb: 242, 242, 244;
+
+    --bs-body-bg: #F2F2F4;
+    --bs-body-color: #18181B;
+
+    --bs-border-color: #D4D4D8;
+
+    --bs-border-radius: 2px;
+    --bs-border-radius-lg: 2px;
+    --bs-border-radius-sm: 2px;
+
+    --font-display: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "SF Mono", "Consolas", "Courier New", monospace;
+
+    /* Extended palette */
+    --surface-elevated: #FFFFFF;
+    --surface-sunken: #E8E8EC;
+    --text-tertiary: #A1A1AA;
+    --accent-subtle: rgba(43, 76, 126, 0.06);
+    --accent-border: rgba(43, 76, 126, 0.18);
+}
+
+/* ============================================
+   Base typography
+   ============================================ */
+body {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.8rem; }
+
+/* ============================================
+   Hero section — stronger visual hierarchy
+   ============================================ */
+.hero {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+    color: var(--bs-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.hero-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bs-primary);
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Navbar
+   ============================================ */
+.navbar-brand {
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.navbar .nav-link.active {
+    color: var(--bs-primary) !important;
+    position: relative;
+}
+
+.navbar .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 2px;
+    background: var(--bs-primary);
+}
+
+/* ============================================
+   Cards — flat, bordered, interactive
+   ============================================ */
+.card {
+    border: 1px solid var(--bs-border-color);
+    box-shadow: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease;
+}
+
+.card-interactive:hover {
+    border-color: var(--bs-primary);
+}
+
+/* ============================================
+   Stat cards — emphasis on numbers
+   ============================================ */
+.stat-value {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bs-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Buttons — flat, minimal radius
+   ============================================ */
+.btn {
+    border-radius: var(--bs-border-radius);
+    font-weight: 500;
+    box-shadow: none;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: #1e3a5f;
+    border-color: #1e3a5f;
+}
+
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: var(--bs-primary);
+    color: #fff;
+    border: none;
+}
+
+.btn-cta:hover {
+    background-color: #1e3a5f;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--bs-dark);
+    border: 1px solid var(--bs-border-color);
+}
+
+.btn-cta-outline:hover {
+    border-color: var(--bs-dark);
+    background-color: var(--surface-sunken);
+}
+
+/* ============================================
+   Badges — rectangular, not pill
+   ============================================ */
+.badge {
+    border-radius: var(--bs-border-radius);
+    font-weight: 600;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+.table thead {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--bs-secondary);
+    border-bottom: 2px solid var(--bs-border-color);
+}
+
+.table td, .table th {
+    border-color: var(--bs-border-color);
+}
+
+/* ============================================
+   Signal indicator — square, not circle
+   ============================================ */
+.signal-dot {
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1px;
+    margin-right: 0.4rem;
+}
+
+.signal-dot--high { background-color: var(--bs-danger); }
+.signal-dot--medium { background-color: var(--bs-warning); }
+.signal-dot--low { background-color: var(--bs-secondary); }
+
+/* ============================================
+   Tracking code / data display
+   ============================================ */
+.tracking-code {
+    font-family: var(--font-mono);
+    letter-spacing: 0.03em;
+}
+
+/* ============================================
+   Form enhancements
+   ============================================ */
+.form-label-upper {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--bs-secondary);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 2px var(--accent-subtle);
+}
+
+/* ============================================
+   Photo preview
+   ============================================ */
+.photo-preview-container {
+    position: relative;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.photo-preview-container.active {
+    display: block;
+}
+
+.photo-preview-img {
+    width: 100%;
+    max-width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+}
+
+.photo-preview-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bs-dark);
+    color: #fff;
+    border: none;
+    border-radius: var(--bs-border-radius);
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+}
+
+.photo-preview-remove:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   Steps / How it works
+   ============================================ */
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 2px solid var(--bs-dark);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+}
+
+.step-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   Section headings
+   ============================================ */
+.section-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bs-secondary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Proof gallery — before/after
+   ============================================ */
+.proof-card .proof-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.4rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.proof-label--before {
+    background: #FFFFFF;
+    color: var(--bs-dark);
+    border: 1px solid var(--bs-border-color);
+}
+
+.proof-label--after {
+    background: var(--bs-primary);
+    color: #fff;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+    background-color: #0c0c30;
+    border-top: 1px solid var(--bs-border-color);
+    color: var(--text-tertiary);
+}
+
+.site-footer a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.site-footer a:hover {
+    color: #fff;
+}
+
+/* ============================================
+   Result card (tracking)
+   ============================================ */
+.result-card {
+    border-left: 3px solid var(--bs-primary);
+}
+
+.result-card--resolved {
+    border-left-color: var(--bs-success);
+}
+
+.result-card--in_progress {
+    border-left-color: var(--bs-warning);
+}
+
+/* ============================================
+   AI summary card
+   ============================================ */
+.ai-summary-card {
+    border: 1px solid var(--accent-border);
+    background: var(--accent-subtle);
+}
+
+.ai-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bs-info);
+    border-bottom: 2px solid var(--bs-info);
+    padding-bottom: 2px;
+}
+
+/* ============================================
+   Loading / interaction states
+   ============================================ */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* ============================================
+   Empty state
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--bs-secondary);
+}
+
+.empty-state-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.4;
+}
+
+/* ============================================
+   Priority bar (dashboard table)
+   ============================================ */
+.priority-bar {
+    width: 44px;
+    height: 6px;
+    background-color: var(--bs-light);
+    border: 1px solid var(--bs-border-color);
+    overflow: hidden;
+}
+
+.priority-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* ============================================
+   Correction notice
+   ============================================ */
+.ai-correction-notice {
+    font-size: 0.8rem;
+    color: var(--bs-secondary);
+    border: 1px solid var(--bs-border-color);
+    padding: 0.5rem 0.75rem;
+    background: var(--accent-subtle);
+}
+
+/* ============================================
+   Accessibility — visible focus outline
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 1px;
+}
+
+/* ============================================
+   Responsive refinements
+   ============================================ */
+@media (max-width: 767.98px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .btn-cta,
+    .btn-cta-outline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .table td,
+    .table th {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   Subtle entrance animation
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+.animate-in-delay-1 { animation-delay: 0.08s; }
+.animate-in-delay-2 { animation-delay: 0.16s; }
+.animate-in-delay-3 { animation-delay: 0.24s; }
+
+@media (max-width: 991.98px) {
+    .navbar-collapse .dropdown-menu {
+        position: static !important;
+        inset: auto !important;   /* reset left/right/top bawaan Bootstrap */
+        float: none;
+        width: 100%;
+        margin-top: 0.25rem;
+        box-shadow: none;
+        border: 1px solid var(--bs-border-color);
+    }
+}
